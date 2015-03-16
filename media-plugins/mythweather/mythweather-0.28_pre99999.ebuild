@@ -29,7 +29,4 @@ setup_pro() {
 
 src_install() {
         mythtv-plugins_src_install
-
-        # correct permissions so MythWeather is actually usable
-        fperms 755 /usr/share/mythtv/mythweather/scripts/*/*.pl
 }
