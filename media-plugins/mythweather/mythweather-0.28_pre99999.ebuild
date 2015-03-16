@@ -21,6 +21,8 @@ DEPEND="dev-perl/DateManip
 	dev-perl/DateTime-Format-ISO8601
 	dev-perl/XML-XPath
 	dev-perl/JSON
+	dev-perl/Switch
+	dev-perl/Date-Calc
 	"
 
 setup_pro() {
