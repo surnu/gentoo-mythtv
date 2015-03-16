@@ -1,0 +1,12 @@
+--- programs/mythfrontend/mythfrontend.pro.orig	2015-03-16 21:35:56.000000000 +0200
++++ programs/mythfrontend/mythfrontend.pro	2015-03-16 21:38:05.101461345 +0200
+@@ -27,6 +27,9 @@
+ setting.files += MFEXML_scpd.xml
+ setting.extra = -ldconfig
+ 
++# Gentoo sandbox-2.0:
++setting.extra -= -ldconfig
++
+ INSTALLS += setting
+ 
+ QMAKE_CLEAN += $(TARGET)
