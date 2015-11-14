@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 		app-arch/unzip"
 
 need_httpd_cgi
-need_php5_httpd
+need_php_httpd
 
 src_configure() {
 	:
