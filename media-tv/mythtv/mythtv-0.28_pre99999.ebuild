@@ -354,8 +354,9 @@ src_install() {
 	done
 	
 	# Ensure that Python scripts are executed by Python 2
-	python_convert_shebangs -q -r 2 "${ED}/usr/share/mythtv"
-	
+	python_fix_shebang "${ED}/usr/share/mythtv"
+	python_optimize
+
 	# Make shell & perl scripts executable
 	find "${ED}" -type f -name '*.sh' -o -type f -name '*.pl' | \
 		while read file; do
@@ -370,7 +371,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 
-	use python && python_mod_optimize MythTV
+	use python
 
 	elog
 	elog "To always have MythBackend running and available run the following:"
@@ -402,7 +403,7 @@ pkg_postinst() {
 
 pkg_postrm()
 {
-	use python && python_mod_cleanup MythTV
+	use python
 }
 
 pkg_info() {

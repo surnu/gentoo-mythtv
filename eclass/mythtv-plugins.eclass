@@ -37,9 +37,6 @@ RESTRICT="strip"
 
 mythtv-plugins_pkg_setup() {
 
-	#Myth can't use python 3
-	python_set_active_version 2
-
 	# List of available plugins (needs to include ALL of them in the tarball)
 	MYTHPLUGINS="mythbrowser mythcontrols mythdvd mythflix mythgallery"
 	MYTHPLUGINS="${MYTHPLUGINS} mythgame mythmusic mythnews mythphone"
