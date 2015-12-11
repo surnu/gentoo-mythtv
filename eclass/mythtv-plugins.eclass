@@ -9,13 +9,13 @@
 #
 # Installs MythTV plugins along with patches from the release-${PV}-fixes branch
 #
-inherit mythtv multilib versionator git-2 python
+
+PYTHON_COMPAT=( python2_7 )
+
+inherit mythtv multilib versionator git-2 python-single-r1
 
 # Extra configure options to pass to econf
 MTVCONF=${MTVCONF:=""}
-
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
 
 SLOT="0"
 IUSE="${IUSE} debug cpu_flags_x86_mmx"

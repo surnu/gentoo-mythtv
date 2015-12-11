@@ -5,7 +5,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-plugins/mythmusic/mythmusic-0.21_p16468.ebuild,v 1.1 2008/03/09 20:46:34 cardoe Exp $
 
-EAPI=4
+EAPI=5
 inherit mythtv-plugins flag-o-matic toolchain-funcs eutils
 
 DESCRIPTION="Music player module for MythTV."

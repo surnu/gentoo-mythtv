@@ -12,9 +12,6 @@
 
 inherit eutils versionator git-2
 
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
-
 # Release version
 MY_PV="${PV%_*}"
 

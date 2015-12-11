@@ -5,11 +5,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-plugins/mythnetvision/mythnetvision-0.23_p25065.ebuild,v 1.2 2010/06/13 07:27:48 cardoe Exp $
 
-EAPI=3
+EAPI=5
 
-PYTHON_DEPEND="2:2.5"
-
-inherit mythtv-plugins python
+inherit mythtv-plugins
 
 DESCRIPTION="MythTV Plugin for watching internet content"
 IUSE=""

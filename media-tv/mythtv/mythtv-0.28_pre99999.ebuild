@@ -7,10 +7,9 @@
 
 EAPI="5"
 MYTHTV_BRANCH="master"
-inherit flag-o-matic multilib eutils mythtv toolchain-funcs python user
+PYTHON_COMPAT=( python2_7 )
 
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
+inherit flag-o-matic multilib eutils mythtv toolchain-funcs python-single-r1 user
 
 DESCRIPTION="Homebrew PVR project"
 HOMEPAGE="http://www.mythtv.org"
@@ -75,6 +74,7 @@ COMMON="media-gfx/exiv2
 		media-libs/faac
 		media-libs/libvpx
 		>=media-libs/x264-0.0.20110426
+		>=media-libs/x265-1.8
 		>=media-sound/lame-3.93.1
 	)
 	ieee1394? (
@@ -140,8 +140,8 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
 pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+
+	python-single-r1_pkg_setup
 
 	einfo "This ebuild now uses a heavily stripped down version of your CFLAGS"
 	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
@@ -214,6 +214,7 @@ src_configure() {
 		myconf="${myconf} --enable-nonfree"
 		myconf="${myconf} --enable-libmp3lame"
 		myconf="${myconf} --enable-libx264"
+		myconf="${myconf} --enable-libx265"
 		myconf="${myconf} --enable-libvpx"
 		myconf="${myconf} --enable-libfaac"
 	else
