@@ -13,7 +13,7 @@ IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="dev-perl/DateManip
-	dev-perl/ImageSize
+	dev-perl/Image-Size
 	dev-perl/SOAP-Lite
 	dev-perl/XML-Simple
 	dev-perl/XML-Parser
