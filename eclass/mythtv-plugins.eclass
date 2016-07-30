@@ -38,38 +38,9 @@ RESTRICT="strip"
 mythtv-plugins_pkg_setup() {
 
 	# List of available plugins (needs to include ALL of them in the tarball)
-	MYTHPLUGINS="mythbrowser mythcontrols mythdvd mythflix mythgallery"
-	MYTHPLUGINS="${MYTHPLUGINS} mythgame mythmusic mythnews mythphone"
-	MYTHPLUGINS="${MYTHPLUGINS} mythvideo mythweather mythweb"
-
-	if version_is_at_least "0.20" ; then
-		MYTHPLUGINS="${MYTHPLUGINS} mytharchive"
-	fi
-
-	if version_is_at_least "0.21_beta" ; then
-		MYTHPLUGINS="${MYTHPLUGINS/mythdvd/}"
-		MYTHPLUGINS="${MYTHPLUGINS} mythzoneminder mythmovies"
-	fi
-
-	if version_is_at_least "0.22_beta" ; then
-		MYTHPLUGINS="${MYTHPLUGINS/mythcontrols/}"
-		MYTHPLUGINS="${MYTHPLUGINS/mythphone/}"
-	fi
-
-	if version_is_at_least "0.23_beta" ; then
-		MYTHPLUGINS="${MYTHPLUGINS/mythflix/}"
-		MYTHPLUGINS="${MYTHPLUGINS} mythnetvision"
-	fi
-
-	if version_is_at_least "0.24_beta" ; then
-		MYTHPLUGINS="${MYTHPLUGINS/mythmovies/}"
-		MYTHPLUGINS="${MYTHPLUGINS/mythweb/}"
-	fi
-
-	if version_is_at_least "0.25_beta" ; then
-		MYTHPLUGINS="${MYTHPLUGINS/mythvideo/}"
-	fi
-
+	MYTHPLUGINS="mytharchive mythbrowser mythgallery mythgame"
+	MYTHPLUGINS="${MYTHPLUGINS} mythmusic mythnetvision mythnews"
+	MYTHPLUGINS="${MYTHPLUGINS} mythweather mythzoneminder"
 }
 
 mythtv-plugins_src_unpack() {
