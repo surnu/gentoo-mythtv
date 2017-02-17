@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
-<repositories xmlns="" version="1.0">
-<repo quality="experimental" status="unofficial">
-    <name>surnu_mythtv</name>
-    <description>Surnu's mythtv ebuilds</description>
-    <homepage>https://github.com/surnu</homepage>
-    <owner>
-        <name>Surnu</name>
-    </owner>
-    <source type="git">https://github.com/surnu/gentoo-mythtv.git</source>
-</repo>
-</repositories>
+surnu-mythtv

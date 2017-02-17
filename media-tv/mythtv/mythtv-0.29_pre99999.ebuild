@@ -27,6 +27,8 @@ egl fftw +hls hdhomerun ieee1394 ivtv jack joystick lcd libass lirc opengl \
 opengl-video perl php pulseaudio python raop rtmp sdl systemd tiff theora \
 vaapi vorbis vdpau xml xmltv +xvid ${IUSE_VIDEO_CARDS}"
 
+
+
 REQUIRED_USE="
         bluray? ( xml )
         theora? ( vorbis )"
@@ -71,7 +73,6 @@ COMMON="media-gfx/exiv2
 	egl? ( media-libs/mesa[egl] )
 	fftw? ( sci-libs/fftw:3.0 )
 	hls? (
-		media-libs/faac
 		media-libs/libvpx
 		>=media-libs/x264-0.0.20110426
 		>=media-libs/x265-1.8
@@ -217,7 +218,6 @@ src_configure() {
 		myconf="${myconf} --enable-libx264"
 		myconf="${myconf} --enable-libx265"
 		myconf="${myconf} --enable-libvpx"
-		myconf="${myconf} --enable-libfaac"
 	else
 		myconf="${myconf} --enable-gpl"
 	fi
