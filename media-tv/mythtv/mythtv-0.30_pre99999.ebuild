@@ -101,6 +101,7 @@ COMMON="media-gfx/exiv2
 		dev-python/mysql-python
 		dev-python/lxml
 		dev-python/urlgrabber
+		dev-python/future
 	)
 	raop? (
 		dev-libs/openssl
@@ -358,7 +359,6 @@ src_install() {
 	
 	# Ensure that Python scripts are executed by Python 2
 	python_fix_shebang "${ED}/usr/share/mythtv"
-	python_optimize
 
 	# Make shell & perl scripts executable
 	find "${ED}" -type f -name '*.sh' -o -type f -name '*.pl' | \

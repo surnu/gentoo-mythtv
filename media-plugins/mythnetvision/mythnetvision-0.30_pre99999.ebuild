@@ -8,6 +8,7 @@
 EAPI=5
 
 inherit mythtv-plugins
+PYTHON_COMPAT=( python2_7 )
 
 DESCRIPTION="MythTV Plugin for watching internet content"
 IUSE=""

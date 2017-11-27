@@ -6,7 +6,7 @@
 # $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/mythweb-0.23.1_p25396.ebuild,v 1.1 2010/07/27 03:14:08 cardoe Exp $
 
 EAPI=4
-inherit mythtv webapp depend.php
+inherit mythtv webapp
 
 DESCRIPTION="PHP scripts intended to manage MythTV from a web browser."
 IUSE=""
@@ -22,7 +22,6 @@ DEPEND="${RDEPEND}
 		app-arch/unzip"
 
 need_httpd_cgi
-need_php_httpd
 
 src_configure() {
 	:
