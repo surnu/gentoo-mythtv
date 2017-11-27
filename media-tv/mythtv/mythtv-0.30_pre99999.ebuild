@@ -102,6 +102,8 @@ COMMON="media-gfx/exiv2
 		dev-python/lxml
 		dev-python/urlgrabber
 		dev-python/future
+		dev-python/requests-cache
+		dev-python/aniso8601
 	)
 	raop? (
 		dev-libs/openssl
