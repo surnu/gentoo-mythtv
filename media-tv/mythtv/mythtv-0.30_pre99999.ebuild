@@ -135,7 +135,6 @@ RDEPEND="${COMMON}
 DEPEND="${COMMON}
 	dev-lang/yasm
 	!backendonly? (
-		x11-proto/xineramaproto
 		x11-apps/xinit
 	)"
 
