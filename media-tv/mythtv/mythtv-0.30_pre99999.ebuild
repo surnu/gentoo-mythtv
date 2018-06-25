@@ -210,8 +210,6 @@ src_configure() {
 	
 	use cec || myconf="${myconf} --disable-libcec"
 	use raop || myconf="${myconf} --disable-libdns-sd"
-	myconf="${myconf} $(use_enable theora libtheora)"
-	myconf="${myconf} $(use_enable vorbis libvorbis)"
 
 	if use hls; then
 		myconf="${myconf} --enable-nonfree"
