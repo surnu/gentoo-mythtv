@@ -290,8 +290,6 @@ src_configure() {
 	has distcc ${FEATURES} || myconf="${myconf} --disable-distcc"
 	has ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
 
-	chmod +x ./external/FFmpeg/version.sh
-
 	# let MythTV come up with our CFLAGS. Upstream will support this
 	CFLAGS=""
 	CXXFLAGS=""
