@@ -136,7 +136,6 @@ DEPEND="${COMMON}
 	dev-lang/yasm
 	!backendonly? (
 		x11-proto/xineramaproto
-		x11-proto/xf86vidmodeproto
 		x11-apps/xinit
 	)"
 
