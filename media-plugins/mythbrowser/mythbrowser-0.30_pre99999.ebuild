@@ -12,7 +12,7 @@ DESCRIPTION="Web browser module for MythTV."
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND=">=dev-qt/qtwebkit-4.8:4"
+RDEPEND=">=dev-qt/qtwebkit-5.1"
 DEPEND="${RDEPEND}"
 
 

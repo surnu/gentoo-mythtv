@@ -18,9 +18,6 @@ DEPEND="${RDEPEND}"
 src_unpack() {
 	git-2_src_unpack
 	mythtv-plugins_src_unpack_patch
-
-	#gentoo zlib patch
-	epatch "${FILESDIR}"/mythgame-zlib-fix.patch
 }
 
 src_install () {

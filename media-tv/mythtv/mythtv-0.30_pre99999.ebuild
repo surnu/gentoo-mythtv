@@ -25,7 +25,7 @@ cpu_flags_x86_ssse3 cpu_flags_x86_sse4_2 cpu_flags_x86_3dnow cpu_flags_x86_3dnow
 alsa altivec autostart backendonly bluray +css cec debug directv dvb dvd \
 egl fftw +hls hdhomerun ieee1394 ivtv jack joystick lcd libass lirc opengl \
 opengl-video perl php pulseaudio python raop rtmp sdl systemd tiff theora \
-vaapi vorbis vdpau xml xmltv +xvid ${IUSE_VIDEO_CARDS}"
+vaapi vorbis vdpau xml xmltv +xvid xnvctrl ${IUSE_VIDEO_CARDS}"
 
 
 
@@ -52,6 +52,7 @@ COMMON="media-gfx/exiv2
 	>=dev-qt/qtwidgets-5.1:5
 	>=dev-qt/qtxml-5.1:5
 	x11-misc/wmctrl
+	media-libs/libsamplerate
 	virtual/mysql
 	virtual/opengl
 	alsa? ( >=media-libs/alsa-lib-1.0.24 )
@@ -207,7 +208,9 @@ src_configure() {
 	myconf="${myconf} --enable-xrandr"
 	myconf="${myconf} --enable-xv"
 	myconf="${myconf} --enable-x11"
-	
+
+	use xnvctrl || myconf="${myconf} --disable-xnvctrl"
+
 	use cec || myconf="${myconf} --disable-libcec"
 	use raop || myconf="${myconf} --disable-libdns-sd"
 
