@@ -10,25 +10,25 @@
 # @BLURB: Downloads the MythTV source packages and any patches from the fixes branch
 #
 
-inherit eutils versionator git-2
+inherit eutils versionator git-r3
 
 # Release version
-MY_PV="${PV%_*}"
+MY_PV="${PVR}"
 
 # what product do we want
 case "${PN}" in
 	mythtv) MY_PN="mythtv"
-	EGIT_REPO_URI="http://github.com/MythTV/mythtv.git"
+	EGIT_REPO_URI="https://github.com/MythTV/mythtv.git"
 	;;
 	mythtv-themes) MY_PN="myththemes"
-	EGIT_REPO_URI="http://github.com/MythTV/myththemes.git"
+	EGIT_REPO_URI="https://github.com/MythTV/myththemes.git"
 	;;
 	mythweb) MY_PN="myththemes"
-	EGIT_REPO_URI="http://github.com/MythTV/mythweb.git"
+	EGIT_REPO_URI="https://github.com/MythTV/mythweb.git"
 	;;
 	*) MY_PN="mythplugins"
-	EGIT_PROJECT="mythtv.git"
-	EGIT_REPO_URI="http://github.com/MythTV/mythtv.git"
+	#EGIT_PROJECT="mythtv.git"
+	EGIT_REPO_URI="https://github.com/MythTV/mythtv.git"
 	;;
 esac
 

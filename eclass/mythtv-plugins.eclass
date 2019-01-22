@@ -12,7 +12,7 @@
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit mythtv multilib versionator git-2 python-single-r1
+inherit mythtv multilib versionator git-r3 python-single-r1
 
 # Extra configure options to pass to econf
 MTVCONF=${MTVCONF:=""}
@@ -28,7 +28,7 @@ DEPEND="${DEPEND}
 		>=sys-apps/sed-4"
 fi
 
-S="${WORKDIR}/mythplugins-${MY_PV}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 QTDIR="/usr"
 
@@ -44,7 +44,7 @@ mythtv-plugins_pkg_setup() {
 }
 
 mythtv-plugins_src_unpack() {
-	git-2_src_unpack
+	git-r3_src_unpack
 	mythtv-plugins_src_unpack_patch
 }
 
@@ -73,7 +73,7 @@ mythtv-plugins_src_configure() {
 	export QT_SELECT=qt5
 
 	cd "${S}/mythplugins"
-
+        python_setup 'python2*'
 	if use debug; then
 		sed -e 's!CONFIG += release!CONFIG += debug!' \
 		-i 'settings.pro' || die "switching to debug build failed"
@@ -104,6 +104,7 @@ mythtv-plugins_src_configure() {
 
 mythtv-plugins_src_compile() {
 	cd "${S}/mythplugins"
+	python_setup 'python2*'
 	${QTDIR}/bin/qmake QMAKE="${QTDIR}/bin/qmake" -o "Makefile" mythplugins.pro || die "qmake failed to run"
 	emake || die "make failed to compile"
 }
