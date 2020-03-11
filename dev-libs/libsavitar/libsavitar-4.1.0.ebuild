@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.3.0-remove-packaged-pugixml.patch )
+PATCHES=( "${FILESDIR}"/${PN}-4.1.0-remove-packaged-pugixml.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

@@ -31,12 +31,13 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-PATCHES=( "${FILESDIR}/${PN}-3.3.0-fix-install-paths.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.1.0-fix-install-paths.patch" )
 DOCS=( README.md )
 
 src_prepare() {
 	default
 	sed -i "s/set(CURA_VERSION \"master\"/set(CURA_VERSION \"${PV}\"/" CMakeLists.txt || die
+	sed -i "s/set(CURA_SDK_VERSION \"\"/set(CURA_SDK_VERSION \"6.0.0\"/" CMakeLists.txt || die
 }
 
 src_configure() {

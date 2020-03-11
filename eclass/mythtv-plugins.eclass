@@ -10,9 +10,9 @@
 # Installs MythTV plugins along with patches from the release-${PV}-fixes branch
 #
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit mythtv multilib versionator git-r3 python-single-r1
+inherit mythtv multilib versionator git-r3
 
 # Extra configure options to pass to econf
 MTVCONF=${MTVCONF:=""}
@@ -38,7 +38,7 @@ RESTRICT="strip"
 mythtv-plugins_pkg_setup() {
 
 	# List of available plugins (needs to include ALL of them in the tarball)
-	MYTHPLUGINS="mytharchive mythbrowser mythgallery mythgame"
+	MYTHPLUGINS="mytharchive mythbrowser mythgame"
 	MYTHPLUGINS="${MYTHPLUGINS} mythmusic mythnetvision mythnews"
 	MYTHPLUGINS="${MYTHPLUGINS} mythweather mythzoneminder"
 }
@@ -73,7 +73,6 @@ mythtv-plugins_src_configure() {
 	export QT_SELECT=qt5
 
 	cd "${S}/mythplugins"
-        python_setup 'python2*'
 	if use debug; then
 		sed -e 's!CONFIG += release!CONFIG += debug!' \
 		-i 'settings.pro' || die "switching to debug build failed"
@@ -104,7 +103,6 @@ mythtv-plugins_src_configure() {
 
 mythtv-plugins_src_compile() {
 	cd "${S}/mythplugins"
-	python_setup 'python2*'
 	${QTDIR}/bin/qmake QMAKE="${QTDIR}/bin/qmake" -o "Makefile" mythplugins.pro || die "qmake failed to run"
 	emake || die "make failed to compile"
 }

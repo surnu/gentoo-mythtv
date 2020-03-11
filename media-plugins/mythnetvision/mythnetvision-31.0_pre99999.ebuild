@@ -16,9 +16,6 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND=">=dev-python/pycurl-7.19.0
 		>=dev-python/imdbpy-3.8
-		dev-python/lxml
-		>=dev-python/mysql-python-1.2.2
-		dev-python/oauth
 		media-tv/mythtv[python]
 		media-plugins/mythbrowser
 		www-plugins/adobe-flash"

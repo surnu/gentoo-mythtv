@@ -18,13 +18,19 @@ IUSE="doc test"
 
 RDEPEND="${PYTHON_DEPS}
 	~dev-libs/libarcus-${PV}:*
-	dev-libs/protobuf"
+	dev-libs/protobuf
+	dev-libs/stb"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 DOCS=( README.md )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+src_prepare() {
+        default
+        sed -i "s/set(CURA_ENGINE_VERSION \"master\"/set(CURA_ENGINE_VERSION \"${PV}\"/" CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=( "-DBUILD_TESTS=$(usex test ON OFF)" )

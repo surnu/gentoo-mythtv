@@ -5,11 +5,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.22_alpha16508.ebuild,v 1.1 2008/03/11 19:56:58 cardoe Exp $
 
-EAPI="5"
+EAPI=6
 MYTHTV_BRANCH="master"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit flag-o-matic multilib eutils mythtv toolchain-funcs python-single-r1 user systemd
+inherit flag-o-matic multilib eutils mythtv toolchain-funcs user systemd python-any-r1
 
 DESCRIPTION="Homebrew PVR project"
 HOMEPAGE="http://www.mythtv.org"
@@ -25,7 +25,7 @@ cpu_flags_x86_ssse3 cpu_flags_x86_sse4_2 cpu_flags_x86_3dnow cpu_flags_x86_3dnow
 alsa altivec autostart backendonly bluray +css cec debug directv dvb dvd \
 egl fftw +hls hdhomerun ieee1394 ivtv jack joystick lcd libass lirc opengl \
 opengl-video perl php pulseaudio python raop rtmp sdl systemd tiff theora \
-vaapi vorbis vdpau xml xmltv +xvid xnvctrl ${IUSE_VIDEO_CARDS}"
+vaapi vorbis vdpau xml xmltv +xvid ${IUSE_VIDEO_CARDS}"
 
 
 
@@ -39,7 +39,6 @@ COMMON="media-gfx/exiv2
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXinerama
-	x11-libs/libXv
 	x11-libs/libXrandr
 	x11-libs/libXxf86vm
 	>=dev-qt/qtcore-5.1:5
@@ -99,12 +98,11 @@ COMMON="media-gfx/exiv2
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	python? (
-		dev-python/mysql-python
 		dev-python/lxml
-		dev-python/urlgrabber
 		dev-python/future
-		dev-python/requests-cache
-		dev-python/aniso8601
+		dev-python/simplejson
+		dev-python/requests
+		dev-python/mysqlclient
 	)
 	raop? (
 		dev-libs/openssl
@@ -145,7 +143,7 @@ MYTHTV_GROUPS="video,audio,tty,uucp"
 
 pkg_setup() {
 
-	python-single-r1_pkg_setup
+	python-any-r1_pkg_setup
 
 	einfo "This ebuild now uses a heavily stripped down version of your CFLAGS"
 	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
@@ -174,7 +172,7 @@ src_prepare() {
 		-i "${S}"/mythtv/bindings/perl/Makefile
 
 	epatch "${FILESDIR}"/sandbox-2.0.patch
-
+	eapply_user
 }
 
 src_configure() {
@@ -206,10 +204,7 @@ src_configure() {
 	myconf="${myconf} $(use_enable xvid libxvid)"
 	myconf="${myconf} --dvb-path=/usr/include"
 	myconf="${myconf} --enable-xrandr"
-	myconf="${myconf} --enable-xv"
 	myconf="${myconf} --enable-x11"
-
-	use xnvctrl || myconf="${myconf} --disable-xnvctrl"
 
 	use cec || myconf="${myconf} --disable-libcec"
 	use raop || myconf="${myconf} --disable-libdns-sd"
@@ -230,7 +225,11 @@ src_configure() {
 	use ivtv || myconf="${myconf} --disable-ivtv"
 
 	#Video
-	use opengl-video && myconf="${myconf} --enable-opengl-video"
+	myconf+=(
+		$(use_enable opengl opengl-video)
+		$(use_enable opengl opengl-themepainter)
+	)
+
 	use vaapi && myconf="${myconf} --enable-vaapi"
 	use rtmp && myconf="${myconf} --enable-librtmp"
 	if use vdpau; then
