@@ -25,9 +25,7 @@ cpu_flags_x86_ssse3 cpu_flags_x86_sse4_2 cpu_flags_x86_3dnow cpu_flags_x86_3dnow
 alsa altivec autostart backendonly bluray +css cec debug directv dvb dvd \
 egl fftw +hls hdhomerun ieee1394 ivtv jack joystick lcd libass lirc opengl \
 opengl-video perl php pulseaudio python raop rtmp sdl systemd tiff theora \
-vaapi vorbis vdpau xml xmltv +xvid ${IUSE_VIDEO_CARDS}"
-
-
+vaapi vorbis vdpau vulkan xml xmltv +xvid ${IUSE_VIDEO_CARDS}"
 
 REQUIRED_USE="
         bluray? ( xml )
@@ -115,6 +113,10 @@ COMMON="media-gfx/exiv2
 	vaapi? ( x11-libs/libva )
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? ( >=media-libs/libvorbis-1.0 )
+	vulkan? (
+		dev-util/glslang
+		dev-util/vulkan-headers
+	)
 	xml? ( >=dev-libs/libxml2-2.6.0 )
 	xvid? ( >=media-libs/xvid-1.1.0 )
 	"
@@ -203,7 +205,6 @@ src_configure() {
 
 	myconf="${myconf} $(use_enable xvid libxvid)"
 	myconf="${myconf} --dvb-path=/usr/include"
-	myconf="${myconf} --enable-xrandr"
 	myconf="${myconf} --enable-x11"
 
 	use cec || myconf="${myconf} --disable-libcec"
@@ -236,6 +237,10 @@ src_configure() {
 		myconf="${myconf} --enable-vdpau"
 	else
 		myconf="${myconf} --disable-vdpau"
+	fi
+
+	if use vulkan; then
+		myconf="${myconf} --enable-vulkan"
 	fi
 
 	myconf="${myconf} $(use_enable cpu_flags_x86_mmx mmx)"
