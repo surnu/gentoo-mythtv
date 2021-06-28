@@ -7,7 +7,7 @@
 
 EAPI=6
 MYTHTV_BRANCH="master"
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit flag-o-matic multilib eutils mythtv toolchain-funcs user systemd python-any-r1
 
